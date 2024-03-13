@@ -121,7 +121,20 @@ export class Service{
         }
     }
 
-    getFilePreview(fileId) {
+    //  getFilePreview(fileId) {
+    //     try {
+    //         const result = this.bucket.getFilePreview(
+    //             conf.appwriteBucketId,
+    //             fileId
+    //         )
+    //         return result
+    //     } catch (error) {
+    //         console.log("Appwrite service :: getFilePreview :: error", error);
+    //     }
+        
+    // }
+
+    getFilePreview(fileId){
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId
