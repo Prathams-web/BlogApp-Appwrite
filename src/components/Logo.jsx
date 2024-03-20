@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Logo({width = "100px"}) {
+function Logo() {
   return (
-    <div>Logo</div>
+    <span >
+      <img className='w-20 h-12' src="src\components\final-logo.webp" alt="Logo" />
+    </span>                                 
   )
 }
 

@@ -77,12 +77,12 @@ export default function PostForm({ post }) {
     
  
   return (
-    <form onSubmit={handleSubmit(submit)} className='flex flex-wrap'>
-        <div className='w-2/3 px-2'>
+    <form onSubmit={handleSubmit(submit)} className='flex rounded-xl p-4 bg-slate-200 flex-wrap'>
+        <div className='md:w-2/3 mb-6 px-4'>
             <Input
                 label="Title :"
                 placeholder="Title"
-                className="mb-4"
+                className="mb-4 "
                 {...register("title", { required: true })}
             />
 
@@ -104,7 +104,7 @@ export default function PostForm({ post }) {
             />
 
         </div>
-        <div className='w-1/3 px-2'>
+        <div className='md:w-1/3 px-2'>
             <Input
                 label="Featured Image :"
                 type="file"

@@ -4,8 +4,11 @@ import appwriteService from "../appwrite/config";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import { ColorRing } from 'react-loader-spinner';
+
 
 export default function Post() {
+    const [loading, setLoading] = useState(true);
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
@@ -14,12 +17,15 @@ export default function Post() {
 
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
+   
+
     useEffect(() => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
                 if (post) setPost(post);
                 else navigate("/");
-            });
+            })
+            .finally(() => setLoading(false));
         } else navigate("/");
     }, [slug, navigate]);
 
@@ -31,6 +37,20 @@ export default function Post() {
             }
         });
     };
+
+    if(loading) return (
+        <span className='flex justify-center'>
+            <ColorRing
+              visible={true}
+              height="150"
+              width="150"
+              ariaLabel="color-ring-loading"
+              wrapperStyle={{}}
+              wrapperClass="color-ring-wrapper"
+              colors={['#f5f5f5', '#dcdcdc', '#a9a9a9', '#cfe2f3', '#5fa2dd']}
+            />
+          </span>
+    )
 
     return post ? (
         <div className="py-8">
@@ -56,9 +76,9 @@ export default function Post() {
                     )}
                 </div>
                 <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
+                    <h1 className="text-2xl text-slate-200 font-bold">{post.title}</h1>
                 </div>
-                <div className="browser-css">
+                <div className="browser-css text-slate-300">
                     {parse(post.content)}
                     </div>
             </Container>

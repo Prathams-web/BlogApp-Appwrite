@@ -6,14 +6,14 @@ function PostCard({$id, title, featuredImage}) {
     // console.log(String(appwriteService.getFilePreview(featuredImage)));
   return (
     <Link to={`/post/${$id}`}>
-        <div className='w-full bg-gray-100 rounded-xl p-4'>
+        <div className='shadow-xl transition-all hover:scale-105 shadow-cyan-500/40 w-full bg-white rounded-xl p-4'>
             <div className='w-full justify-center mb-4'>
                 <img src={appwriteService.getFilePreview(featuredImage)} alt={title}
                 className='rounded-xl' />
 
             </div>
             <h2
-            className='text-xl font-bold'
+            className='text-sm lg:text-xl md:text-lg sm:text-sm font-bold'
             >{title}</h2>
         </div>
     </Link>
